@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/views/home/home.vue';
+import Home from '../views/home/home.vue';
+import Detail from '../views/detail/detail';
 
 Vue.use(Router);
 
@@ -20,8 +21,7 @@ const router = new Router({
       meta: {
         title: '详情'
       },
-      component: () =>
-        import(/* webpackChunkName: "detail" */ '@/views/detail/detail.vue')
+      component: Detail
     },
   ]
 });

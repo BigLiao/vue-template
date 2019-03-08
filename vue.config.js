@@ -29,7 +29,8 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
-      .set('_c', resolve('src/components'));
+      .set('_c', resolve('src/components'))
+      .set('_p', resolve('src/pages'));
   },
   // 打包时不生成.map文件
   productionSourceMap: false,
@@ -53,5 +54,23 @@ module.exports = {
         javascriptEnabled: true
       }
     }
+  },
+
+  // 多页面
+  pages: {
+    treasure: {
+      // page 的入口
+      entry: 'src/pages/treasure/treasure.js',
+      // 模板来源
+      template: 'public/index.html',
+      // 在 dist/index.html 的输出
+      filename: 'treasure.html',
+      // 当使用 title 选项时，
+      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
+      title: '积分夺宝',
+      // 在这个页面中包含的块，默认情况下会包含
+      // 提取出来的通用 chunk 和 vendor chunk。
+      chunks: ['chunk-vendors', 'chunk-common', 'treasure']
+    },
   }
 };
