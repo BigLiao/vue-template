@@ -13,7 +13,7 @@ npm install -g @vue/cli
 ```
 
 安装后可以通过 `vue --version`  命令查看版本。
-![4034260f3fdc067c8310738884612da1.png](en-resource://database/535:0)
+![version.png](./doc/img/pic1.png)
 
 #### 通过 Vue Cli 创建项目
 
@@ -28,7 +28,7 @@ npm install -g @vue/cli
 - `Linter`: 配置`eslint` 代码规范检查
 - `Unit`: 单元测试用的
 
-![c6a8a2ec07a120e459b7e27336ef5848.png](en-resource://database/537:0)
+![preset](doc/img/pic2.png)
 
 ##### Use history mode for router?
 选择使用 vue-router 里的 hash 模式 还是 history 模式。history 模式需要服务端配合，所以这里先选择 `n`  并回车——使用hash 模式，等生产环境时服务端支持的话再改为 history 模式即可。
@@ -173,3 +173,9 @@ module.exports = {
 ```
 
 ## 目录结构
+
+![diction](doc/img/pic3.png)
+
+## Http 请求封装
+
+## Mock.js 本地模拟接口
