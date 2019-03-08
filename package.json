@@ -1,5 +1,5 @@
 {
-  "name": "vue-template",
+  "name": "smart-point-h5",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "mint-ui": "^2.2.13",
     "vue": "^2.6.6",
     "vue-i18n": "^8.8.2",
     "vue-router": "^3.0.1",
@@ -23,6 +24,8 @@
     "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-import": "^1.11.0",
     "chai": "^4.1.2",
     "eslint": "^5.8.0",
     "eslint-config-alloy": "^1.4.2",
