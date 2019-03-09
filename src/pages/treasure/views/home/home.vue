@@ -8,6 +8,7 @@
   }
   .award-name {
     height: p2v(30);
+    background-color: @secondary-color;
   }
 }
 </style>
