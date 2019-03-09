@@ -8,8 +8,6 @@
     .clearfix;
   }
   .award-name {
-    box-sizing: border-box;
-    height: .vpx(60)[@result];
   }
 }
 </style>
