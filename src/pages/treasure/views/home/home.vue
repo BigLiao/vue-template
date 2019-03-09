@@ -25,19 +25,23 @@
         ]"
       />
     </div>
-    <div class="award-name">
-      星巴克限量版樱花杯套组
+    <div class="info">
+      <h2>
+        <tag />
+        <h2>星巴克限量版樱花杯套组</h2>
+      </h2>
     </div>
   </div>
 </template>
 
 <script>
 import Slider from '../../components/slider/slider';
+import Tag from '../../components/tag/tag';
 
 export default {
   name: 'home',
   components: {
-    Slider
+    Slider, Tag
   }
 };
 </script>

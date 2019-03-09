@@ -1,3 +1,6 @@
+import less from 'less';
+console.log();
+
 export default {
   functional: true,
   props: {
