@@ -1,6 +1,7 @@
 /**
  * 定义常用的 less 变量和函数
  */
+// @plugin './less.plugin';
 
 @primary-color: #334982;  // 主题蓝
 @secondary-color: #F74213; // 副色橙
@@ -11,16 +12,6 @@
 @text-color: #081426; // 字体色
 @text-light-color: #979797; // 浅字体
 @border-color: #979797; // 边框灰
-
- // 设计稿尺寸
-@designWidth: 360;
-// 计算自适应尺寸
-.vpx(@px) {
-  @result: unit(100 / @designWidth * @px, vw);
-}
-.h(@px) {
-  height: unit(100 / @designWidth * @px, vw);
-}
 
 .clearfix {
   &::after {

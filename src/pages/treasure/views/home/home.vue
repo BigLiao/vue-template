@@ -1,13 +1,13 @@
 <style lang="less" scoped>
 @import '~_p/treasure/style/variable.less';
+@plugin '../../style/less.plugin';
 
 .home {
-  font-size: 48px;
-  color: red;
   .slider-wrapper {
     .clearfix;
   }
   .award-name {
+    height: p2v(30);
   }
 }
 </style>
@@ -23,11 +23,10 @@
           {src: 'http://www.yourpetswellness.net/wp-content/uploads/2015/09/New-Patient-Hub-Cat-Friendly-Practice-1-750x400.jpg'}
         ]"
       />
-      <div class="award-name">
-        星巴克限量版樱花杯套组
-      </div>
     </div>
-
+    <div class="award-name">
+      星巴克限量版樱花杯套组
+    </div>
   </div>
 </template>
 
