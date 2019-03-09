@@ -172,6 +172,36 @@ module.exports = {
 };
 ```
 
+#### JSX 支持
+
+在 Vue 里面经常要写 `render` 函数，为了更好的体验，我们引入 `JSX`。
+```shell
+npm install -save-dev @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props
+```
+
+修改 `babel.config.js` 里的配置
+```javascript
+module.exports = {
+  presets: ['@vue/app', '@vue/babel-preset-jsx']
+};
+```
+
+写法如下：
+```javascript
+import AnchoredHeading from './AnchoredHeading.vue'
+
+new Vue({
+  el: '#demo',
+  render: function (h) {
+    return (
+      <AnchoredHeading level={1}>
+        <span>Hello</span> world!
+      </AnchoredHeading>
+    )
+  }
+})
+```
+
 ## 目录结构
 
 ![diction](doc/img/pic3.png)
