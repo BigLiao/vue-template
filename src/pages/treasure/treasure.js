@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import i18n from '@/locale';
-import './style/index';
+import '@/style/index';
 
 // Mock 数据
 import '@/mock';

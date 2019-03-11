@@ -8,6 +8,7 @@
   padding: 2px 6px;
   border-radius: 2px;
   // background-color: #fff;
+  vertical-align: middle;
   &.end {
     color: @text-light-color;
     border: 1px solid @text-light-color;
