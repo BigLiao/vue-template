@@ -4,6 +4,8 @@ const resolve = dir => {
   return path.join(__dirname, dir);
 };
 
+const LessFunctionPlugin = require('less-plugin-functions');
+
 // 项目部署基础
 // 默认情况下，我们假设你的应用将被部署在域的根目录下,
 // 例如：https://www.my-app.com/
@@ -11,7 +13,7 @@ const resolve = dir => {
 // 如果您的应用程序部署在子路径中，则需要在这指定子路径
 // 例如：https://www.foobar.com/my-app/
 // 需要将它改为'/my-app/'
-const PUBLICK_PATH = process.env.NODE_ENV === 'production' ? '/public/' : '/';
+const PUBLICK_PATH = process.env.NODE_ENV === 'production' ? '/' : '/';
 
 module.exports = {
   // Project deployment base
@@ -53,7 +55,10 @@ module.exports = {
     loaderOptions: {
       // 给 less-loader 传递选项
       less: {
-        javascriptEnabled: true
+        javascriptEnabled: true,
+        plugins: [
+          new LessFunctionPlugin()
+        ]
       }
     }
   },
@@ -64,7 +69,7 @@ module.exports = {
       // page 的入口
       entry: 'src/pages/treasure/treasure.js',
       // 模板来源
-      template: 'public/index.html',
+      template: 'template/index.html',
       // 在 dist/index.html 的输出
       filename: 'treasure.html',
       // 当使用 title 选项时，

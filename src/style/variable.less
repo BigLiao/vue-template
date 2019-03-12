@@ -1,7 +1,7 @@
 /**
  * 定义常用的 less 变量和函数
  */
-@plugin './less.plugin';
+// @plugin './less.plugin.js';
 
 @primary-color: #334982;  // 主题蓝
 @secondary-color: #F74213; // 副色橙
@@ -45,3 +45,8 @@
   }
 }
 
+.function {
+  .p2v(@px) {
+    return: unit(@px * 100 / 360, vw);
+  }
+}
