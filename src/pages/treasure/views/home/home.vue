@@ -1,6 +1,6 @@
 <style lang="less" scoped>
 @import '~@/style/variable.less';
-// @plugin '../../style/less.plugin';
+// @plugin '~@/style/less.plugin';
 
 .home {
   .slider-wrapper {
