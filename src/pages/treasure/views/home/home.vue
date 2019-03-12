@@ -7,7 +7,7 @@
     .clearfix();
   }
   .info {
-    padding: 7px 15px 15px;
+    padding: 7px 15px 10px;
     background-color: #ffffff;
     .h2 {
       .title {
@@ -27,11 +27,15 @@
       color: @ornament-color;
       font-size: 12px;
     }
+  }
+  .status-before{
+    background-color: #ffffff;
+    padding-bottom: 15px;
+    .border1px();
     .price-wrapper {
-      margin-top: 10px;
       display: flex;
       justify-content: space-between;
-      padding: 0 4px;
+      padding: 0 15px;
     }
     .price-per {
       color: @text-light-color;
@@ -40,21 +44,32 @@
     .price-total {
       font-size: 12px;
     }
+    .progress-wrapper {
+      margin: 5px 15px 0;
+    }
     .count-wrapper {
-      margin-top: 6px;
+      margin: 6px 15px 0;
       display: flex;
       justify-content: space-between;
       font-size: 12px;
     }
+    .button-wrapper {
+      margin: 12px 15px 0;
+    }
     .count-remain {
       color: @text-light-color;
     }
-  }
-  .button-wrapper {
-    margin-top: 12px;
-  }
-  .participate-tip {
 
+    .participate-tip {
+      margin: 10px 15px 0;
+      color: @text-light-color;
+      background-color: @background-color;
+      padding: 4px 0;
+      text-align: center;
+      border-radius: 2px;
+      font-size: 12px;
+      line-height: 17px;
+    }
   }
 }
 </style>
@@ -81,6 +96,8 @@
         <span class="point">STR</span>
         <span class="point">&nbsp;积分抽</span>
       </div>
+    </div>
+    <div>
       <!-- 下面是不同状态 -->
       <!-- 开奖前 -->
       <div class="status-before" v-if="status==='before'">
@@ -88,7 +105,9 @@
           <div class="price-per">0.25个积分/抽奖码</div>
           <div class="price-total">总需6850个抽奖码</div>
         </div>
-        <Progress :percentage="60" style="margin-top:5px;"></Progress>
+        <div class="progress-wrapper">
+          <Progress :percentage="60" style="margin-top:5px;"></Progress>
+        </div>
         <div class="count-wrapper">
           <div class="count-have">已参与685个抽奖码</div>
           <div class="count-remain">
@@ -99,8 +118,9 @@
           <Button size="large">立即参与</Button>
         </div>
         <div class="participate-tip">
-          您还没有参与本期夺宝哦
+          您还没有参与本期夺宝哦！
         </div>
+        <div></div>
       </div>
       <!-- 夺宝开奖中 -->
       <div class="status-doing"></div>

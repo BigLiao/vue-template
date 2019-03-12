@@ -21,4 +21,4 @@ const app = new Vue({
 setTimeout(() => {
   const dom = document.getElementById('app');
   dom.parentNode.replaceChild(app.$el, dom);
-}, 5000);
+}, 0);
