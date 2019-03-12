@@ -50,6 +50,12 @@
       color: @text-light-color;
     }
   }
+  .button-wrapper {
+    margin-top: 12px;
+  }
+  .participate-tip {
+
+  }
 }
 </style>
 
@@ -75,18 +81,31 @@
         <span class="point">STR</span>
         <span class="point">&nbsp;积分抽</span>
       </div>
-      <div class="price-wrapper">
-        <div class="price-per">0.25个积分/抽奖码</div>
-        <div class="price-total">总需6850个抽奖码</div>
-      </div>
-      <Progress :percentage="60" style="margin-top:5px;"></Progress>
-      <div class="count-wrapper">
-        <div class="count-have">已参与685个抽奖码</div>
-        <div class="count-remain">
-          剩余<span class="count">800</span>个抽奖码
+      <!-- 下面是不同状态 -->
+      <!-- 开奖前 -->
+      <div class="status-before" v-if="status==='before'">
+        <div class="price-wrapper">
+          <div class="price-per">0.25个积分/抽奖码</div>
+          <div class="price-total">总需6850个抽奖码</div>
+        </div>
+        <Progress :percentage="60" style="margin-top:5px;"></Progress>
+        <div class="count-wrapper">
+          <div class="count-have">已参与685个抽奖码</div>
+          <div class="count-remain">
+            剩余<span class="count">800</span>个抽奖码
+          </div>
+        </div>
+        <div class="button-wrapper">
+          <Button size="large">立即参与</Button>
+        </div>
+        <div class="participate-tip">
+          您还没有参与本期夺宝哦
         </div>
       </div>
-      <Button size="large">立即参与</Button>
+      <!-- 夺宝开奖中 -->
+      <div class="status-doing"></div>
+      <!-- 夺宝已结束 -->
+      <div class="status-end"></div>
     </div>
   </div>
 </template>
@@ -101,6 +120,11 @@ export default {
   name: 'home',
   components: {
     Slider, Tag, Progress, Button
+  },
+  data() {
+    return {
+      status: 'before'
+    };
   }
 };
 </script>

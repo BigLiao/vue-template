@@ -10,9 +10,15 @@ import '@/mock';
 
 Vue.config.productionTip = false;
 
-new Vue({
+// eslint-disable-next-line
+const app = new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
-}).$mount('#app');
+  render: h => h(App),
+}).$mount();
+
+setTimeout(() => {
+  const dom = document.getElementById('app');
+  dom.parentNode.replaceChild(app.$el, dom);
+}, 5000);
