@@ -11,6 +11,7 @@ class HttpRequest {
       baseURL: options.baseURL,
       headers: {
         // 这里可能放登录token
+        ...options.headers
       }
     };
     const instance = axios.create(config);

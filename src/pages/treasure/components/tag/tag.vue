@@ -7,6 +7,7 @@
   border: 1px solid #DF6A2B;
   padding: 2px 6px;
   border-radius: 2px;
+  font-size: 12px;
   // background-color: #fff;
   vertical-align: middle;
   &.end {

@@ -12,3 +12,25 @@
   background-color: @secondary-color;
   color: #ffffff;
 }
+
+.mint-button--plain {
+  background-color: #ffffff;
+  color: @secondary-color;
+  border: 1px solid @secondary-color;
+  &::after {
+    background-color: #ffffff;
+  }
+}
+
+.mint-cell-wrapper {
+  background-origin: border-box;
+  background-image: linear-gradient(180deg, @background-color, @background-color 50%, transparent 50%);
+}
+
+.mint-cell:last-child {
+  background-image: linear-gradient(0deg, @background-color, @background-color 50%, transparent 50%);
+}
+
+.mint-button {
+  font-size: 16px;
+}
