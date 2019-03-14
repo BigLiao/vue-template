@@ -15,11 +15,18 @@
     background-color: @secondary-color;
     border-radius: 4px;
   }
+  &.progress-large {}
+  &.progress-small {
+    height: 5px;
+    .by-progress-fill {
+      height: 5px;
+    }
+  }
 }
 </style>
 
 <template>
-  <div class="by-progress">
+  <div class="by-progress" :class="`progress-${size}`">
     <div class="by-progress-fill" :style="`width:${percentage}%`"></div>
   </div>
 </template>
@@ -31,6 +38,10 @@ export default {
     percentage: {
       type: Number,
       default: 25
+    },
+    size: {
+      type: String,
+      default: 'default'
     }
   }
 };

@@ -4,8 +4,9 @@ import Home from '../views/home/home.vue';
 import Detail from '../views/detail/detail';
 import Order from '../views/order/order';
 import OrderInfo from '../views/order-info/order-info';
-import RewardDetail from '../views/reward-detail/reward-detail';
+import PrizeDetail from '../views/prize-detail/prize-detail';
 import CalcRules from '../views/calc-rules/calc-rules';
+import TakePrize from '../views/take-prize/take-prize';
 
 Vue.use(Router);
 
@@ -42,12 +43,12 @@ const router = new Router({
       },
       component: OrderInfo
     }, {
-      path: '/reward-detail',
-      name: 'reward-detail',
+      path: '/prize-detail',
+      name: 'prize-detail',
       meta: {
         title: '获奖成功'
       },
-      component: RewardDetail
+      component: PrizeDetail
     }, {
       path: '/calc-rules',
       name: 'calc-rules',
@@ -55,6 +56,13 @@ const router = new Router({
         title: '计算详情'
       },
       component: CalcRules
+    }, {
+      path: '/take-prize',
+      name: 'take-prize',
+      meta: {
+        title: '领奖地址填写'
+      },
+      component: TakePrize
     }
   ]
 });

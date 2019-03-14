@@ -15,6 +15,10 @@
   }
   .title {
     font-weight: bold;
+    .tips {
+      color: @text-light-color;
+      font-weight: normal;
+    }
   }
   .content {
     margin-top: 10px;
@@ -42,6 +46,28 @@
       </div>
       <div class="button-wrapper">
         <Button type="primary" plain>计算详情</Button>
+      </div>
+    </div>
+    <div class="item">
+      <div class="title">数值B</div>
+      <div class="content">
+        数值B=取当前时时彩开奖号，当前期为：20190203002 = <em>14837</em>
+      </div>
+    </div>
+    <div class="item">
+      <div class="title">数值C</div>
+      <div class="content">
+        数值A=奖品所需人次 = <em>1400</em>
+      </div>
+    </div>
+    <div class="item">
+      <div class="title">计算结果
+        <span class="tips">(Mod为求余函数)</span>
+      </div>
+      <div class="content">
+        (6016177970+14837) Mod 130 = 17<br>
+        17（余数）+ 10000001（固定值） = <em>10002317</em><br>
+        幸运号码：<em>100002317</em>
       </div>
     </div>
   </div>

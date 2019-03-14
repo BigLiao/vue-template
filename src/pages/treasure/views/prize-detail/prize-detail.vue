@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 @import '~@/style/variable.less';
 
-.reward-detail {
+.prize-detail {
   .order-card {
     padding: 10px 12px;
     background-color: #ffffff;
@@ -93,7 +93,7 @@
 </style>
 
 <template>
-  <div class="reward-detail">
+  <div class="prize-detail">
     <div class="order-card">
       <div class="issure">
         <div class="tag-wrapper">
@@ -160,11 +160,12 @@
 <script>
 import Tag from '_c/tag/tag';
 import { Button } from 'mint-ui';
+import Avatar from '_c/avatar/avatar';
 
 export default {
-  name: 'reward-detail',
+  name: 'prize-detail',
   components: {
-    Tag, Button
+    Tag, Button, Avatar
   },
   data() {
     return {

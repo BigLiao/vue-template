@@ -14,10 +14,15 @@
     color: @text-light-color;
     border: 1px solid @text-light-color;
   }
+  &.fill {
+    color: #ffffff;
+    background-color: @secondary-color;
+    border: 1px solid @secondary-color;
+  }
 }
 </style>
 
 
 <template functional>
-  <div class="by-tag" :class="{end:props.end}">{{props.end ? '已结束' : '进行中'}}</div>
+  <div class="by-tag" :class="props.type">{{props.text}}</div>
 </template>
