@@ -57,12 +57,28 @@ export default {
   },
   methods: {
     onValuesChange(picker, values) {
+      // if (!values[0] || !values[0].state || !values[1].city) {
+      //   return;
+      // }
       console.log(values);
-      if (values[1].parent_id !== values[0].id) {
+      if (values[0].state[0] && !values[0].state[0].id) {
+        // 省份为空的情况
+        console.log('省份为空');
+        const contryId = values[0].id;
+        const contry = cityData.find(item => item.id === contryId);
+        const provinces = contry.state[0].city.map(item => ({
+          id: item.id,
+          parent_id: item.parent_id,
+          name: item.name,
+          english_name: item.english_name,
+          type: item.type
+        }));
+        this.citySlots[1].values = provinces;
+        this.citySlots[2].values = [];
+      } else if (values[1].parent_id !== values[0].id) {
         // 重新设置省份
         const contryId = values[0].id;
         const contry = cityData.find(item => item.id === contryId);
-        console.log(contry);
         const provinces = contry.state.map(item => ({
           id: item.id,
           parent_id: item.parent_id,

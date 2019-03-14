@@ -211,7 +211,10 @@
         </div>
       </div>
       <!-- 夺宝开奖中 -->
-      <div class="status-doing" v-if="status==='doing'"></div>
+      <div class="status-doing" v-if="status==='doing'">
+        <Clocker :endAt="endAt" />
+      </div>
+
       <!-- 夺宝已结束 -->
       <div class="status-end" v-if="status==='end'">
         <div class="result-number">
@@ -242,6 +245,7 @@
           </div>
         </div>
       </div>
+
     </div>
     <div class="participate-tips">
       <OnePx v-if="false" />
@@ -282,7 +286,7 @@
     </div>
 
     <!-- 图文详情 -->
-    <div class="detail" v-if="false">
+    <div class="detail" v-if="true">
       <h2 class="title">图文详情</h2>
       <article class="content">
         ...<br>
@@ -301,10 +305,39 @@
         这里是图文详情<br>
         ...<br>
         这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
+        ...<br>
+        这里是图文详情<br>
       </article>
-    </div>
-    <div class="city-picker-wrapper">
-      <city-picker></city-picker>
     </div>
   </div>
 </template>
@@ -316,21 +349,22 @@ import Progress from '@/components/progress/progress';
 import { Button, Cell } from 'mint-ui';
 import OnePx from '_c/one-px/one-px';
 import Avatar from '_c/avatar/avatar';
-import CityPicker from '_c/city-picker/city-picker';
+import Clocker from './components/clocker/clocker';
 
 export default {
   name: 'home',
   components: {
-    Slider, Tag, Progress, Button, Cell, OnePx, Avatar, CityPicker
+    Slider, Tag, Progress, Button, Cell, OnePx, Avatar, Clocker
   },
   data() {
     return {
-      status: 'end',
+      status: 'doing',
       numberList: [
         '100002012', '100002012', '100002012', '100002012', '100002012',
         '100002012', '100002012', '100002012', '100002012',
       ],
-      myNumberListClose: true
+      myNumberListClose: true,
+      endAt: new Date().getTime() + 40000
     };
   }
 };

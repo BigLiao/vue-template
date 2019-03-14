@@ -33,6 +33,7 @@
     height: 0;
     padding-bottom: percentage(@height / @width);
   }
+  .clearfix();
 }
 
 .border1px(@position:bottom) {
@@ -61,17 +62,20 @@
 }
 
 .bgImg(@path) {
-  background-image: url('{@path}1x.png');
+  background-image: ~"url(@{path}.png)";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
   @media screen and (min-device-pixel-ratio:2) {
-    background-image: url('{@path}2x.png');
-  }
-  @media screen and (min-device-pixel-ratio:3) {
-    background-image: url('{@path}3x.png');
+    background-image: ~"url(@{path}@2x.png)";
   }
 }
 
 .function {
   .p2v(@px) {
     return: unit(@px * 100 / 360, vw);
+  }
+  .bgUrl(@path) {
+    // return
   }
 }

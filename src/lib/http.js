@@ -10,3 +10,10 @@ export const mockHttp = new HttpRequest({
 export const http = new HttpRequest({
   baseURL: config.baseUrlProd
 });
+
+export const upload = new HttpRequest({
+  baseURL: config.baseUrlProd,
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
+});
