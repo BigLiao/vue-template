@@ -11,6 +11,7 @@ class HttpRequest {
       baseURL: options.baseURL,
       headers: {
         // 这里可能放登录token
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         ...options.headers
       }
     };
@@ -20,7 +21,8 @@ class HttpRequest {
   }
   addPendding(config, cancelFunc) {
     const { url, data } = config;
-    const flag = `${url}:${JSON.stringify(data)}`;
+    const dataStr = (typeof data === 'string') ? data : JSON.stringify(data);
+    const flag = `${url}:${dataStr}`;
     if (flag in this.pendding) {
       cancelFunc();
     } else {
@@ -29,7 +31,7 @@ class HttpRequest {
   }
   removePendding(config) {
     const { url, data, baseURL } = config;
-    const baseURLRegexp = new RegExp(`^\\${baseURL}`);
+    const baseURLRegexp = new RegExp(`^\\${baseURL || '/'}`);
     const flag = `${url.replace(baseURLRegexp, '/')}:${data}`;
     delete this.pendding[flag];
   }
@@ -44,17 +46,50 @@ class HttpRequest {
     // 响应拦截
     instance.interceptors.response.use((res) => {
       this.removePendding(res.config);
-      if (res.data.code === STUTS_OK) {
-        return [null, res.data];
+      if (res.data.status < 0) {
+        handleServerError(res.data.status);
+        return [{
+          code: res.data.status,
+          errorType: -1, // -2：网络错误，-1：服务器错误，0：接口错误
+          isHandled: true,
+          error: {},
+          errorMessage: ''
+        }, null];
+      } else if (res.data.status === 0) {
+        return [null, {
+          code: 0,
+          data: res.data.data
+        }];
+      } else {
+        return [{
+          code: res.data.status,
+          errorType: 0, // -2：网络错误，-1：服务器错误，0：接口错误
+          isHandled: false,
+          error: {},
+          errorMessage: ''
+        }, null];
       }
-      return [res.data, null];
     }, (error) => {
       if (axios.isCancel(error)) {
         return [{ msg: '请求频率过快，请稍等再试。' }, {}];
       }
+      handleStatusError(error.response.status);
       this.removePendding(error.config);
-      return [error, null];
+      return [{
+        code: error.response.status,
+        errorType: -2, // -2：网络错误，-1：服务器错误，0：接口错误
+        isHandled: true,
+        error: {}
+      }, null];
     });
   }
 }
 export default HttpRequest;
+
+function handleServerError() {
+  //
+}
+
+function handleStatusError() {
+  //
+}

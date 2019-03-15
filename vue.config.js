@@ -40,10 +40,19 @@ module.exports = {
   // 这里写你调用接口的基础路径，来解决跨域，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
   devServer: {
     hot: true,
-    // host: "localhost",
+    // host: 'localhost',
     host: '0.0.0.0',
     port: 8090,
-    // proxy: 'http://127.0.0.1:7001',
+    // proxy: '',
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://restapi.smartpoints.network',
+    //     changeOrigin: true,
+    //     onProxyReq(proxyReq, req, res) {
+    //       // console.log(proxyReq);
+    //     }
+    //   }
+    // },
     overlay: {
       warnings: true,
       errors: true

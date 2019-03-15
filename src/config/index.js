@@ -1,4 +1,5 @@
 export default {
   baseUrlMock: '/mock/',
-  baseUrlProd: '/'
+  baseUrlProd: '/',
+  baseUrlTest: 'http://localhost:3000/'
 };

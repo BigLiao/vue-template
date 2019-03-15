@@ -8,7 +8,7 @@ export const mockHttp = new HttpRequest({
 
 // 真实接口
 export const http = new HttpRequest({
-  baseURL: config.baseUrlProd
+  baseURL: config.baseUrlTest
 });
 
 export const upload = new HttpRequest({

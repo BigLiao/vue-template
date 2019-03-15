@@ -29,7 +29,7 @@
     top: 0;
     width: 100%;
     padding-top: 36%;
-    font-size: 26px;
+    font-size: 28px;
     color: #ffffff;
     word-spacing: 0.2em;
     .unit {

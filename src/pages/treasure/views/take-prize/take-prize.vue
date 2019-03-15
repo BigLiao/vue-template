@@ -45,7 +45,7 @@
     <div class="header">
       <div class="address-info">
         <div>领奖地址：</div>
-        <div class="address-detail">
+        <div class="address-detail" @click="popupVisible=true">
           <span>填写收货地址</span><i class="icon-right">&gt;</i>
         </div>
         <div class="user">
@@ -60,11 +60,13 @@
     <!-- 填写地址弹窗 -->
     <Popup
       v-model="popupVisible"
-      popup-transition="popup-fade"
       position="right"
       class="popup-fullscreen"
+      :closeOnClickModal="false"
     >
-      <AddressForm></AddressForm>
+      <AddressForm
+        @cancel="popupVisible=false"
+      ></AddressForm>
     </Popup>
   </div>
 </template>
@@ -81,8 +83,11 @@ export default {
   },
   data() {
     return {
-      popupVisible: true,
+      popupVisible: false,
     };
-  }
+  },
+  methods: {
+    //
+  },
 };
 </script>

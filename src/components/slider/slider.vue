@@ -15,7 +15,7 @@
     :style="{height:0,paddingBottom:`${1 / ratio * 100}%`}"
   >
     <SwipeItem v-for="(item, index) of imageList" :key="index">
-      <img :src="item.src" :alt="item.alt || ''" width="100%"
+      <img :src="item" alt="product" width="100%"
       >
     </SwipeItem>
   </Swipe>
@@ -25,7 +25,7 @@
 import { Swipe, SwipeItem } from 'mint-ui';
 
 export default {
-  name: 'c-slider',
+  name: 'by-slider',
   components: {
     Swipe, SwipeItem
   },

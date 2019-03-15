@@ -7,6 +7,8 @@ import OrderInfo from '../views/order-info/order-info';
 import PrizeDetail from '../views/prize-detail/prize-detail';
 import CalcRules from '../views/calc-rules/calc-rules';
 import TakePrize from '../views/take-prize/take-prize';
+import Record from '../views/record/record';
+import OrderList from '../views/order-list/order-list';
 
 Vue.use(Router);
 
@@ -63,6 +65,20 @@ const router = new Router({
         title: '领奖地址填写'
       },
       component: TakePrize
+    }, {
+      path: '/record',
+      name: 'record',
+      meta: {
+        title: '抽奖记录'
+      },
+      component: Record
+    }, {
+      path: '/order-list',
+      name: 'order-list',
+      meta: {
+        title: '我的参与记录'
+      },
+      component: OrderList
     }
   ]
 });

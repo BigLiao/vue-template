@@ -75,7 +75,7 @@
     background-color: #ffffff;
     .title {
       padding: 14px 0;
-      margin: 0 15px;
+      margin: 0 12px;
     }
   }
 
@@ -157,6 +157,10 @@
         padding: 0 5px 0 0;
         white-space: nowrap;
       }
+      .result-tips {
+        margin-left: 15px;
+        color: @secondary-color;
+      }
     }
   }
   .city-picker-wrapper {
@@ -170,39 +174,35 @@
     <div class="slider-wrapper">
       <Slider
         :ratio="360 / 182"
-        :imageList="[
-          {src: 'https://www.petsworld.in/blog/wp-content/uploads/2018/10/Cat-Instinct-Tips.jpg'},
-          {src: 'https://www.youthworker.com/articles/wp-content/uploads/2016/07/smiling-cat-750x400.jpg'},
-          {src: 'http://www.yourpetswellness.net/wp-content/uploads/2015/09/New-Patient-Hub-Cat-Friendly-Practice-1-750x400.jpg'}
-        ]"
+        :imageList="activityData.imageList"
       />
     </div>
     <div class="info">
       <h2 class="h2">
-        <tag />
-        <span class="title">星巴克限量版樱花杯套组</span>
+        <Tag type="" text="进行中" />
+        <span class="title">{{activityData.title}}</span>
       </h2>
       <div style="margin-top:6px;">
-        <span class="number">编号：20190203001期</span>
-        <span class="point">STR</span>
+        <span class="number">编号：{{activityData.stage}}期</span>
+        <span class="point">{{activityData.pointName}}</span>
         <span class="point">&nbsp;积分抽</span>
       </div>
     </div>
     <div>
       <!-- 下面是不同状态 -->
       <!-- 开奖前 -->
-      <div class="status-before" v-if="status==='before'">
+      <div class="status-before" v-if="activityData.activityStatusEnum===0">
         <div class="price-wrapper">
-          <div class="price-per">0.25个积分/抽奖码</div>
-          <div class="price-total">总需6850个抽奖码</div>
+          <div class="price-per">{{activityData.unitPrice}}个积分/抽奖码</div>
+          <div class="price-total">总需{{activityData.totalCount}}个抽奖码</div>
         </div>
         <div class="progress-wrapper">
           <Progress :percentage="60" style="margin-top:5px;"></Progress>
         </div>
         <div class="count-wrapper">
-          <div class="count-have">已参与685个抽奖码</div>
+          <div class="count-have">已参与{{activityData.applyCount}}个抽奖码</div>
           <div class="count-remain">
-            剩余<span class="count">800</span>个抽奖码
+            剩余<span class="count">{{activityData.leftCount}}</span>个抽奖码
           </div>
         </div>
         <div class="button-wrapper">
@@ -211,36 +211,36 @@
         </div>
       </div>
       <!-- 夺宝开奖中 -->
-      <div class="status-doing" v-if="status==='doing'">
-        <Clocker :endAt="endAt" />
+      <div class="status-doing" v-if="activityData.activityStatusEnum===1">
+        <Clocker :endAt="endAt" @clockEnd="status='end'" />
       </div>
 
       <!-- 夺宝已结束 -->
-      <div class="status-end" v-if="status==='end'">
+      <div class="status-end" v-if="activityData.activityStatusEnum>=2">
         <div class="result-number">
           <div class="cacl-button">计算详情</div>
           <div class="lucky-number">
-            幸运中奖号码：100002317
+            幸运中奖号码：{{activityData.luckyNumber}}
           </div>
         </div>
         <div class="result-user">
           <div class="avatar-wrapper">
-            <Avatar />
+            <Avatar :src="activityData.luckyUserHeadPic" />
           </div>
           <div class="user-info">
             <div class="item">
-              获奖者：口袋君***
-              <span class="tips">(深圳 IP 183.123.12.88)</span>
+              获奖者：{{activityData.luckyUserName}}
+              <span class="tips">({{activityData.ipAddress}})</span>
             </div>
             <div class="item">
-              182328****<span class="tips">(唯一)</span>
+              {{activityData.luckyNumber}}<span class="tips">(唯一)</span>
             </div>
             <div class="item">
-              本次参与：50个抽奖码
+              本期参与：{{activityData.luckyUserApplyCount}}个抽奖码
               <a href="javascript:;">查看</a>
             </div>
             <div class="item">
-              揭晓时间：2019.02.18 18:26:14
+              揭晓时间：{{activityData.drawTime}}
             </div>
           </div>
         </div>
@@ -255,7 +255,7 @@
       </div>
       <div class="have-participate">
         <div class="count">
-          我本次活动已参与：<span>10</span>个抽奖码
+          本期已参与：<span>10</span>个抽奖码<span class="result-tips" v-if="!activityData.isWin">本期未抽中</span>
         </div>
         <div class="my-numbers">
           抽奖码：
@@ -343,13 +343,14 @@
 </template>
 
 <script>
-import Slider from '../../components/slider/slider';
-import Tag from '../../components/tag/tag';
+import Slider from '@/components/slider/slider';
+import Tag from '@/components/tag/tag';
 import Progress from '@/components/progress/progress';
 import { Button, Cell } from 'mint-ui';
 import OnePx from '_c/one-px/one-px';
 import Avatar from '_c/avatar/avatar';
 import Clocker from './components/clocker/clocker';
+import { activityDetail } from '../../api/http';
 
 export default {
   name: 'home',
@@ -364,8 +365,27 @@ export default {
         '100002012', '100002012', '100002012', '100002012',
       ],
       myNumberListClose: true,
-      endAt: new Date().getTime() + 40000
+      endAt: new Date().getTime() + 50000,
+      activityData: {
+        imageList: []
+      }
     };
-  }
+  },
+  mounted() {
+    this.initData();
+  },
+  methods: {
+    async initData() {
+      const [err, res] = await activityDetail({
+        activityIdStr: 'te'
+      });
+      if (err) {
+        console.log('err', err);
+        return;
+      }
+      console.log(res.data);
+      this.activityData = res.data;
+    }
+  },
 };
 </script>
