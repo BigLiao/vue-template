@@ -12,9 +12,10 @@ const options = {
   }
 };
 
-// app.options('*', function(req, res) {
-//   res.send(200);
-// });
+app.options('*', function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.send(200);
+});
 
 app.use('/api', proxy(options));
 app.listen(3000);

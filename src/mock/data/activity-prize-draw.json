@@ -1,0 +1,12 @@
+{
+  "status": 0,
+  "hasError": false,
+  "data": {
+      "result": 1,
+      "msg": "success",
+      "errorCode": 0,
+      "errorMessage": "",
+      "extraValue": ""
+  },
+  "serverTimestamp": 1552544405829
+}

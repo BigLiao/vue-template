@@ -1,0 +1,72 @@
+{
+  "status": 0,
+  "hasError": false,
+  "data": {
+      "recordList": [
+          {
+              "activityId": "te",
+              "pointIdStr": "STA",
+              "pointName": "",
+              "stage": "20190313011",
+              "title": "星巴克限量版樱花杯套组",
+              "coverImageUrl": "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+              "unitPrice": "0.25",
+              "totalCount": 100000000,
+              "applyCount": 10000000,
+              "leftCount": 90000000,
+              "activityStatusEnum": 0
+          },
+          {
+              "activityId": "te",
+              "pointIdStr": "STA",
+              "pointName": "",
+              "stage": "20190313011",
+              "title": "星巴克限量版樱花杯套组",
+              "coverImageUrl": "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+              "unitPrice": "0.25",
+              "totalCount": 100000000,
+              "applyCount": 10000000,
+              "leftCount": 90000000,
+              "activityStatusEnum": 0
+          },
+          {
+              "activityId": "te",
+              "pointIdStr": "STA",
+              "pointName": "",
+              "stage": "20190313011",
+              "title": "星巴克限量版樱花杯套组",
+              "coverImageUrl": "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+              "unitPrice": "0.25",
+              "totalCount": 100000000,
+              "applyCount": 10000000,
+              "leftCount": 90000000,
+              "activityStatusEnum": 0
+          },
+          {
+              "activityId": "te",
+              "pointIdStr": "STA",
+              "pointName": "",
+              "stage": "20190313011",
+              "title": "星巴克限量版樱花杯套组",
+              "coverImageUrl": "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+              "unitPrice": "0.25",
+              "totalCount": 100000000,
+              "applyCount": 10000000,
+              "leftCount": 90000000,
+              "activityStatusEnum": 0
+          }
+      ],
+      "hasMore": false,
+      "pageNo": 0,
+      "pageCount": 0,
+      "pageSize": 0,
+      "totalCount": 0,
+      "lastId": "",
+      "result": 1,
+      "msg": "",
+      "errorCode": 0,
+      "errorMessage": "",
+      "extraValue": ""
+  },
+  "serverTimestamp": 1552531596054
+}

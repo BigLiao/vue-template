@@ -1,0 +1,23 @@
+{
+  "status": 0,
+  "hasError": false,
+  "data": {
+      "activityId": "te",
+      "activityApplyId": "te",
+      "pointIdStr": "te",
+      "pointName": "STA",
+      "stage": "201903140933909",
+      "title": "星巴克限量版樱花杯套组",
+      "coverImageUrl": "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+      "unitPrice": "0.25",
+      "activityStatusEnum": 0,
+      "count": 4,
+      "drawNumbers": "1000089;1000088;1000087;1000086",
+      "result": 1,
+      "msg": "",
+      "errorCode": 0,
+      "errorMessage": "",
+      "extraValue": ""
+  },
+  "serverTimestamp": 1552544590377
+}

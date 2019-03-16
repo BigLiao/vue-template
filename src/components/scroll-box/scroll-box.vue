@@ -1,6 +1,6 @@
 <style lang="less">
 .by-scroll-box {
-  height: 100%;
+  height: 600px;
   position: relative;
   overflow: auto;
 }

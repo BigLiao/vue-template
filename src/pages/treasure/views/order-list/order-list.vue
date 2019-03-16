@@ -95,7 +95,7 @@ export default {
       }
       this.recordList = res.data.recordList;
       this.lastIdStr = res.data.lastIdStr;
-      this.allLoaded = !res.hasMore;
+      this.allLoaded = !res.data.hasMore;
     },
     async moreData() {
       const [err, res] = await orderList({ lastIdStr: this.lastIdStr });
@@ -104,15 +104,20 @@ export default {
       }
       this.recordList = this.recordList.concat(res.data.recordList);
       this.lastIdStr = res.data.lastIdStr;
-      this.allLoaded = !res.hasMore;
+      this.allLoaded = !res.data.hasMore;
     },
     async handleLoadTop() {
-      if (!this.firstLoaded) return;
+      if (!this.firstLoaded) {
+        this.$refs.scrollBox.loadTopStop();
+        return;
+      }
       await this.initData();
       this.$refs.scrollBox.loadTopStop();
     },
     async handleLoadBottom() {
-      if (!this.firstLoaded) return;
+      if (!this.firstLoaded) {
+        return;
+      }
       await this.moreData();
       this.$refs.scrollBox.loadBottomStop();
     }

@@ -1,9 +1,10 @@
-import { http } from '@/lib/http';
+import { http, mockHttp } from '@/lib/http';
 import store from '../store';
 import Qs from 'qs';
 
 // 加入基础参数的post请求
-export const post = (url, data) => http.post(url, Qs.stringify({ ...store.state.apiBaseParameter, ...data }));
+// export const post = (url, data) => http.post(url, Qs.stringify({ ...store.state.apiBaseParameter, ...data }));
+const post = (url, data) => mockHttp.post(url, data);
 
 // 活动详情
 export function activityDetail(data) {

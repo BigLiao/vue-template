@@ -43,7 +43,7 @@ module.exports = {
     // host: 'localhost',
     host: '0.0.0.0',
     port: 8090,
-    // proxy: '',
+    // proxy: 'http://restapi.smartpoints.network',
     // proxy: {
     //   '/api': {
     //     target: 'http://restapi.smartpoints.network',

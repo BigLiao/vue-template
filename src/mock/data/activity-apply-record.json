@@ -1,0 +1,65 @@
+{
+  "status": 0,
+  "hasError": false,
+  "data": {
+      "recordList": [
+          {
+              "activityId": "te",
+              "userName": "Tz",
+              "headPic": "https://avatars0.githubusercontent.com/u/4979648?v=4",
+              "phone": "188****2530",
+              "ipAddress": "深圳 12.12.12.21",
+              "count": 10,
+              "applyTime": "2019.03.13 09:09:09"
+          },
+          {
+              "activityId": "te",
+              "userName": "Tz",
+              "headPic": "https://avatars0.githubusercontent.com/u/4979648?v=4",
+              "phone": "188****2530",
+              "ipAddress": "深圳 12.12.12.21",
+              "count": 10,
+              "applyTime": "2019.03.13 09:09:09"
+          },
+          {
+              "activityId": "te",
+              "userName": "Tz",
+              "headPic": "https://avatars0.githubusercontent.com/u/4979648?v=4",
+              "phone": "188****2530",
+              "ipAddress": "深圳 12.12.12.21",
+              "count": 10,
+              "applyTime": "2019.03.13 09:09:09"
+          },
+          {
+              "activityId": "te",
+              "userName": "Tz",
+              "headPic": "https://avatars0.githubusercontent.com/u/4979648?v=4",
+              "phone": "188****2530",
+              "ipAddress": "深圳 12.12.12.21",
+              "count": 10,
+              "applyTime": "2019.03.13 09:09:09"
+          },
+          {
+              "activityId": "te",
+              "userName": "Tz",
+              "headPic": "https://avatars0.githubusercontent.com/u/4979648?v=4",
+              "phone": "188****2530",
+              "ipAddress": "深圳 12.12.12.21",
+              "count": 10,
+              "applyTime": "2019.03.13 09:09:09"
+          }
+      ],
+      "hasMore": false,
+      "pageNo": 0,
+      "pageCount": 0,
+      "pageSize": 0,
+      "totalCount": 0,
+      "lastId": "",
+      "result": 1,
+      "msg": "",
+      "errorCode": 0,
+      "errorMessage": "",
+      "extraValue": ""
+  },
+  "serverTimestamp": 1552544816083
+}

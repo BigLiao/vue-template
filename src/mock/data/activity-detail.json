@@ -1,0 +1,40 @@
+{
+  "status": 0,
+  "hasError": false,
+  "data": {
+      "activityId": "te",
+      "pointIdStr": "te",
+      "pointName": "STA",
+      "stage": "20190313011",
+      "title": "星巴克限量版樱花杯套组",
+      "coverImageUrl": "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+      "imageList": [
+          "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+          "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+          "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72",
+          "https://f10.baidu.com/it/u=1230594473,2222196705&fm=72"
+      ],
+      "unitPrice": "0.25",
+      "totalCount": 1000,
+      "applyCount": 900,
+      "leftCount": 100,
+      "activityTypeEnum": 1,
+      "activityStatusEnum": 2,
+      "luckyNumber": "1000098",
+      "luckyUserName": "Tz",
+      "luckyUserHeadPic": "https://avatars0.githubusercontent.com/u/4979648?v=4",
+      "luckyUserApplyCount": 100,
+      "ipAddress": "深圳 12.22.22.11",
+      "drawTime": "201903130911",
+      "count": 4,
+      "drawNumbers": "1000089;1000088;1000087;1000086",
+      "detail": "这是活动的详情",
+      "isWin": 0,
+      "result": 1,
+      "msg": "",
+      "errorCode": 0,
+      "errorMessage": "",
+      "extraValue": ""
+  },
+  "serverTimestamp": 1552531923110
+}
