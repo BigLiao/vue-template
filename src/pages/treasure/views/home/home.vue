@@ -281,6 +281,7 @@
       <Cell
         title="本期参与记录"
         is-link
+        to="/order-list"
       >
       </Cell>
     </div>
