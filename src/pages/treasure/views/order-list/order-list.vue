@@ -24,10 +24,9 @@
 <template>
   <div class="order-list">
     <ScrollBox
-      @load-top="handleLoadTop"
-      @load-bottom="handleLoadBottom"
+      @pullingDown="initData"
+      @pullingUp="moreData"
       ref="scrollBox"
-      :allLoaded="allLoaded"
     >
       <ul class="list">
         <li class="item" v-for="(item, index) of recordList" :key="index">
@@ -61,7 +60,7 @@
 
 <script>
 import ProductInfo from '../../components/product-info/product-info';
-import ScrollBox from '@/components/scroll-box/scroll-box';
+import ScrollBox from '@/components/better-scroll/better-scroll';
 import { Button } from 'mint-ui';
 import { orderList } from '../../api/http';
 import { imageClip } from '@/filters';
@@ -96,6 +95,7 @@ export default {
       this.recordList = res.data.recordList;
       this.lastIdStr = res.data.lastIdStr;
       this.allLoaded = !res.data.hasMore;
+      this.$refs.scrollBox.update();
     },
     async moreData() {
       const [err, res] = await orderList({ lastIdStr: this.lastIdStr });
@@ -105,6 +105,7 @@ export default {
       this.recordList = this.recordList.concat(res.data.recordList);
       this.lastIdStr = res.data.lastIdStr;
       this.allLoaded = !res.data.hasMore;
+      this.$refs.scrollBox.update();
     },
     async handleLoadTop() {
       if (!this.firstLoaded) {

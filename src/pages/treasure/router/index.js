@@ -9,6 +9,7 @@ import CalcRules from '../views/calc-rules/calc-rules';
 import TakePrize from '../views/take-prize/take-prize';
 import Record from '../views/record/record';
 import OrderList from '../views/order-list/order-list';
+import Example from '../views/example';
 
 Vue.use(Router);
 
@@ -79,6 +80,10 @@ const router = new Router({
         title: '我的参与记录'
       },
       component: OrderList
+    }, {
+      path: '/example',
+      name: 'example',
+      component: Example
     }
   ]
 });

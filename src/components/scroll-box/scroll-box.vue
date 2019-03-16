@@ -1,26 +1,22 @@
 <style lang="less">
 .by-scroll-box {
-  height: 600px;
+  height: 100%;
   position: relative;
   overflow: auto;
 }
 </style>
 
 <template>
-  <div class="by-scroll-box">
-    <Loadmore
-      :bottom-method="loadBottom"
-      :top-method="loadTop"
-      ref="loadmore"
-      :allLoaded="allLoaded"
-    >
+  <div class="by-scroll-box" ref="betterScroll">
+    <div class="scroll-content">
       <slot />
-    </Loadmore>
+    </div>
   </div>
 </template>
 
 <script>
 import { Loadmore } from 'mint-ui';
+import BetterScroll from 'better-scroll';
 
 export default {
   name: 'by-scroll-box',
@@ -28,42 +24,64 @@ export default {
     Loadmore
   },
   props: {
-    bottomLoading: {
-      type: Boolean,
+    pullDown: {
+      type: [Function, Boolean],
       default: false
     },
-    topLoading: {
-      type: Boolean,
-      defaut: false
-    },
-    allLoaded: {
-      type: Boolean,
+    pullUp: {
+      type: [Function, Boolean],
       default: false
     }
   },
   data() {
     return {
-      hasMore: true
+      hasMore: true,
+      scroll: null
     };
   },
   watch: {
     //
   },
+  mounted() {
+    this.init();
+  },
   methods: {
-    loadBottom() {
-      this.$emit('load-bottom');
-      console.log('loadbottom');
+    init() {
+      this.scroll = new BetterScroll(this.$refs.betterScroll, {
+        scrollX: false, scrollY: true,
+      });
+      if (this.pullDown) {
+        this.scroll.openPullDown({
+          threshold: -50,
+          stop: 0
+        });
+        this.scroll.on('pullingDown', this.pullingDown);
+      }
+      if (this.pullUp) {
+        this.scroll.openPullUp({
+          threshold: -50
+        });
+        this.scroll.on('pullingUp', this.pullingUp);
+      }
     },
-    loadBottomStop() {
-      this.$refs.loadmore.onBottomLoaded();
+    refresh() {
+      this.scroll.refresh();
     },
-    loadTop() {
-      this.$emit('load-top');
-      console.log('loadTop');
+    async pullingDown() {
+      console.log('scroll pull Down start');
+      await this.pullDown();
+      // this.$nextTick(() => this.scroll.finishPullDown());
+      console.log('scroll pull Down end');
+      this.scroll.finishPullDown();
     },
-    loadTopStop() {
-      this.$refs.loadmore.onTopLoaded();
-    },
+    async pullingUp() {
+      console.log('scroll pullUP start');
+      await this.pullUp();
+      console.log('scroll pullUp end');
+      // this.$nextTick(() => this.scroll.finishPullUp());
+      this.scroll.finishPullUp();
+      // this.refresh();
+    }
   },
 };
 </script>
