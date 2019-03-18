@@ -18,13 +18,18 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
+      redirect: '/order-list'
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
       meta: {
         title: '积分夺宝'
       },
       component: Home
     },
     {
-      path: '/order',
+      path: '/order/:id',
       name: 'order',
       meta: {
         title: '提交订单'
@@ -32,13 +37,6 @@ const router = new Router({
       component: Order
     },
     {
-      path: '/detail/:id',
-      name: 'detail',
-      meta: {
-        title: '夺宝详情'
-      },
-      component: Detail
-    }, {
       path: '/order-info/:id',
       name: 'order-info',
       meta: {
@@ -53,14 +51,14 @@ const router = new Router({
       },
       component: PrizeDetail
     }, {
-      path: '/calc-rules',
+      path: '/calc-rules/:id',
       name: 'calc-rules',
       meta: {
         title: '计算详情'
       },
       component: CalcRules
     }, {
-      path: '/take-prize',
+      path: '/take-prize/:id',
       name: 'take-prize',
       meta: {
         title: '领奖地址填写'

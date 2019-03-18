@@ -6,7 +6,7 @@
       "msg": "success",
       "errorCode": 0,
       "errorMessage": "",
-      "extraValue": ""
+      "extraValue": "123"
   },
   "serverTimestamp": 1552544405829
 }

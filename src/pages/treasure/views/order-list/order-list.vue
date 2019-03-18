@@ -30,26 +30,30 @@
     >
       <ul class="list">
         <li class="item" v-for="(item, index) of recordList" :key="index">
-          <ProductInfo :info="item" />
+          <ProductInfo :info="item" @goDetail="$router.push(`/detail/${item.activityId}`)" />
           <div class="button-wrapper">
             <Button
               v-if="item.activityStatusEnum===0"
               size="large"
+              @click="$router.push(`/order/${item.activityId}`)"
             >立即追投</Button>
             <Button
               v-if="item.activityStatusEnum===2"
               size="large"
               type="warning"
               plain
+              @click="$router.push(`/detail/${item.activityId}`)"
             >查看详情</Button>
             <Button
               v-if="item.activityStatusEnum===1"
               size="large"
               plain
+              @click="$router.push(`/detail/${item.activityId}`)"
             >去开奖台</Button>
             <Button
               v-if="item.activityStatusEnum===3"
               size="large"
+              @click="$router.push(`/tack-prize/${item.activityId}`)"
             >填写领奖地址</Button>
           </div>
         </li>

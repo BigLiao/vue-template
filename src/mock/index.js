@@ -1,12 +1,20 @@
 import Mock from 'mockjs';
 const mock = Mock.mock;
-const activityList = require('./data/activity-list.json');
+const activityList = require('./data/activity-list.js');
 const recordList = require('./data/activity-user-apply-record.json');
+import activityDetail from './data/activity-detail.js';
 
 mock('/mock/api/activity/list', function(options) {
   return activityList;
 });
-mock('/mock/api/activity/detail', require('./data/activity-detail.json'));
+mock('/mock/api/activity/detail', function(options) {
+  // console.log(options);
+  const params = JSON.parse(options.body);
+  if (!params.activityIdStr) {
+    return error();
+  }
+  return success(activityDetail(params.activityIdStr));
+});
 mock('/mock/api/activity/applyPage', require('./data/activity-apply-page.json'));
 mock('/mock/api/activity/apply', require('./data/activity-apply.json'));
 mock('/mock/api/activity/apply/record', require('./data/activity-apply-record.json'));

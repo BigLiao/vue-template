@@ -45,7 +45,7 @@
         数值A=取截止该奖品开奖时间点<em>全站</em>最后50条参与时间记录之和 = <em>6016123123</em>
       </div>
       <div class="button-wrapper">
-        <Button type="primary" plain>计算详情</Button>
+        <Button type="primary" plain v-if="false">计算详情</Button>
       </div>
     </div>
     <div class="item">

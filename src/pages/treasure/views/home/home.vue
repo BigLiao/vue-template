@@ -206,19 +206,19 @@
           </div>
         </div>
         <div class="button-wrapper">
-          <Button size="large">立即参与</Button>
-          <Button size="large" type="plain" style="margin-top:10px;">邀请朋友即送抽奖码</Button>
+          <Button size="large" @click="$router.push(`/order/${activityIdStr}`)">{{activityData.count > 0 ? '立即追投' : '立即参与'}}</Button>
+          <Button size="large" plain style="margin-top:10px;">邀请朋友即送抽奖码</Button>
         </div>
       </div>
       <!-- 夺宝开奖中 -->
       <div class="status-doing" v-if="activityData.activityStatusEnum===1">
-        <Clocker :endAt="endAt" @clockEnd="status='end'" />
+        <Clocker :endAt="endAt" @clockEnd="initData" />
       </div>
 
       <!-- 夺宝已结束 -->
       <div class="status-end" v-if="activityData.activityStatusEnum>=2">
         <div class="result-number">
-          <div class="cacl-button">计算详情</div>
+          <div class="cacl-button" @click="$router.push(`/calc-rules/${activityIdStr}`)">计算详情</div>
           <div class="lucky-number">
             幸运中奖号码：{{activityData.luckyNumber}}
           </div>
@@ -248,12 +248,11 @@
 
     </div>
     <div class="participate-tips">
-      <OnePx v-if="false" />
-      <div class="not-participate" v-if="false">
+      <div class="not-participate" v-if="activityData.count === 0">
         <i class="icon-warning">!</i>
         您还没有参与本期夺宝哦！
       </div>
-      <div class="have-participate">
+      <div class="have-participate" v-else>
         <div class="count">
           本期已参与：<span>10</span>个抽奖码<span class="result-tips" v-if="!activityData.isWin">本期未抽中</span>
         </div>
@@ -366,10 +365,12 @@ export default {
         '100002012', '100002012', '100002012', '100002012',
       ],
       myNumberListClose: true,
-      endAt: new Date().getTime() + 50000,
+      endAt: new Date().getTime() + 30000,
       activityData: {
-        imageList: []
-      }
+        imageList: [],
+        count: 0
+      },
+      activityIdStr: ''
     };
   },
   mounted() {
@@ -377,8 +378,9 @@ export default {
   },
   methods: {
     async initData() {
+      this.activityIdStr = this.$route.params.id;
       const [err, res] = await activityDetail({
-        activityIdStr: 'te'
+        activityIdStr: this.activityIdStr
       });
       if (err) {
         console.log('err', err);

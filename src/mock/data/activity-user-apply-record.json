@@ -4,7 +4,7 @@
   "data": {
       "recordList": [
           {
-              "activityId": "te",
+              "activityId": "abc",
               "pointIdStr": "te",
               "pointName": "COCA",
               "stage": "201903130911",
@@ -18,11 +18,11 @@
               "drawNumbers": "1000089;1000088;1000087;1000086",
               "isWin": 0,
               "luckyNumber": "1000012",
-              "luckyUserName": "Tz",
+              "luckyUserName": "abc",
               "drawTime": "2019.03.11 09:09:09"
           },
           {
-              "activityId": "ssas",
+              "activityId": "def",
               "pointIdStr": "te",
               "pointName": "NOMY",
               "stage": "201903130912",
@@ -36,11 +36,11 @@
               "drawNumbers": "1000089;1000088;1000087;1000086;1000089;1000088;1000087;1000086",
               "isWin": 0,
               "luckyNumber": "1000012",
-              "luckyUserName": "Me",
+              "luckyUserName": "def",
               "drawTime": "2019.03.20 09:09:09"
           },
           {
-              "activityId": "sdad",
+              "activityId": "hijk",
               "pointIdStr": "te",
               "pointName": "COCA",
               "stage": "201903130911",
@@ -54,11 +54,11 @@
               "drawNumbers": "1000089;1000088;1000087;1000086",
               "isWin": 1,
               "luckyNumber": "1000012",
-              "luckyUserName": "Tz",
+              "luckyUserName": "hijk",
               "drawTime": "2019.03.11 09:09:09"
           },
           {
-              "activityId": "te",
+              "activityId": "opq",
               "pointIdStr": "te",
               "pointName": "COCA",
               "stage": "201903130911",
@@ -72,7 +72,7 @@
               "drawNumbers": "1000089;1000088;1000087;1000086",
               "isWin": 1,
               "luckyNumber": "1000012",
-              "luckyUserName": "Tz",
+              "luckyUserName": "opq",
               "drawTime": "2019.03.11 09:09:09"
           }
       ],

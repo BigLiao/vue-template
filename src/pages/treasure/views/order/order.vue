@@ -105,18 +105,21 @@
       <div class="order-card">
         <div class="issure">
           <div class="tag-wrapper">
-            <Tag />
+            <Tag v-if="orderPageData.activityStatusEnum===0" text="进行中" />
+            <Tag v-if="orderPageData.activityStatusEnum===1" type="end" text="已结束" />
+            <Tag v-if="orderPageData.activityStatusEnum===2" type="end" text="已结束" />
+            <Tag v-if="orderPageData.activityStatusEnum===3" type="fill" text="开奖单" />
           </div>
           编号：20190203001期
         </div>
         <div class="product">
           <div class="img-wrapper">
-            <img src="https://www.petsworld.in/blog/wp-content/uploads/2018/10/Cat-Instinct-Tips.jpg" alt="product" width="100%" height="auto">
+            <img :src="orderPageData.coverImageUrl" alt="product" width="100%" height="auto">
           </div>
           <div class="info">
-            <div class="name">星巴克限量版樱花杯套组</div>
+            <div class="name">{{orderPageData.title}}</div>
             <div class="price">
-              <em class="number">{{price}}</em>STR积分/抽奖码
+              <em class="number">{{orderPageData.unitPrice}}</em>{{orderPageData.pointName}}积分/抽奖码
             </div>
             <div class="cart">
               <cart-input v-model="cartCount"></cart-input>
@@ -129,13 +132,13 @@
     <div class="bottom order-bar">
       <div class="payment-info">
         <div class="price">
-          <span class="number">{{paymentPrice}}</span>STR
+          <span class="number">{{paymentPrice}}</span>{{orderPageData.pointName}}
         </div>
         <div class="have">
-          拥有STR积分：241.51
+          拥有{{orderPageData.pointName}}积分：{{orderPageData.account}}
         </div>
       </div>
-      <div class="payment-button">
+      <div class="payment-button" @click="handleSubmitClick">
         立即参与
       </div>
     </div>
@@ -145,7 +148,8 @@
 <script>
 import Tag from '_c/tag/tag';
 import CartInput from '_c/cart-input/cart-input';
-import { Indicator } from 'mint-ui';
+import { Indicator, Toast } from 'mint-ui';
+import { orderPage, orderSubmit } from '../../api/http';
 
 export default {
   name: 'order',
@@ -155,19 +159,57 @@ export default {
   data() {
     return {
       cartCount: 0,
-      price: 0.25
+      activityIdStr: '',
+      orderPageData: {}
     };
   },
   computed: {
     paymentPrice() {
-      return (this.cartCount * this.price).toFixed(2);
+      if (!this.orderPageData.unitPrice) {
+        return 0;
+      }
+      return (this.cartCount * this.orderPageData.unitPrice).toFixed(2);
     }
   },
   mounted() {
-    Indicator.open({
-      text: '分配中，请稍后',
-      spinnerType: 'fading-circle'
-    });
+    this.initData();
+  },
+  beforeDestroy() {
+    Indicator.close();
+  },
+  methods: {
+    async initData() {
+      this.activityIdStr = this.$route.params.id;
+      const [err, res] = await orderPage({
+        activityIdStr: this.activityIdStr
+      });
+      if (err) {
+        return;
+      }
+      this.orderPageData = res.data;
+
+    },
+    handleSubmitClick() {
+      if (this.paymentPrice >= this.orderPageData.account) {
+        Toast('积分不足');
+        return;
+      }
+      this.submit();
+    },
+    async submit() {
+      Indicator.open({
+        text: '分配中，请稍后',
+        spinnerType: 'fading-circle'
+      });
+      const [err, res] = await orderSubmit({ activityIdStr: this.activityIdStr, count: this.cartCount });
+      Indicator.close();
+      if (err) {
+        console.log(err);
+        return;
+      }
+      const activityApplyId = res.data.extraValue;
+      this.$router.push(`/order-info/${activityApplyId}`);
+    }
   },
 };
 </script>

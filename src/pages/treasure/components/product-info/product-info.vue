@@ -98,11 +98,11 @@
         编号：{{info.stage}}期
       </div>
       <div class="product">
-        <div class="img-wrapper">
+        <div class="img-wrapper" @click="$emit('goDetail')">
           <img :src="info.coverImageUrl | imageClip" alt="product" width="100%" height="auto">
         </div>
         <div class="info">
-          <div class="name">{{info.title}}</div>
+          <div class="name" @click="$emit('goDetail')">{{info.title}}</div>
           <!-- 开奖前 -->
           <div class="before" v-if="info.activityStatusEnum===0">
             <div class="progress-wrapper">
