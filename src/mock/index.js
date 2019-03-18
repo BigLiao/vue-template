@@ -23,6 +23,12 @@ mock('/mock/api/activity/user/applyRecord', function(options) {
 });
 mock('/mock/api/activity/prize/draw', require('./data/activity-prize-draw.json'));
 mock('/mock/api/activity/apply/detail', require('./data/activity-apply-detail.json'));
+mock('/mock/api/express/add', function () {
+  return success();
+});
+mock('/mock/api/takePrizePage', function() {
+  return success(require('./data/take-prize-page.json'));
+});
 
 function success(data) {
   return {

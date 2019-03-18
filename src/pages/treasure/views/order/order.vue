@@ -208,7 +208,7 @@ export default {
         return;
       }
       const activityApplyId = res.data.extraValue;
-      this.$router.push(`/order-info/${activityApplyId}`);
+      this.$router.replace(`/order-info/${activityApplyId}`);
     }
   },
 };

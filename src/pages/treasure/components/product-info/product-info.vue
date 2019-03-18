@@ -132,12 +132,12 @@
         <div class="list">
           抽奖码：
           <template v-if="myNumberListClose">
-            <span class="item" v-for="(item, index) of info.drawNumbers.split(';').slice(0, 3)" :key="index">{{item}};</span>
-            <a href="javascript:;" v-if="info.drawNumbers.split(';').length > 3" style="margin-left:10px;" @click="myNumberListClose=false">查看更多</a>
+            <span class="item" v-for="(item, index) of info.drawNumbers ? info.drawNumbers.split(';').slice(0, 3) : []" :key="index">{{item}};</span>
+            <a href="javascript:;" v-if="info.drawNumbers && info.drawNumbers.split(';').length > 3" style="margin-left:10px;" @click="myNumberListClose=false">查看更多</a>
           </template>
           <template v-if="!myNumberListClose">
-            <span class="item" v-for="(item, index) of info.drawNumbers.split(';')" :key="index">{{item}};</span>
-            <a href="javascript:;" v-if="info.drawNumbers.split(';').length > 3" style="margin-left:10px;" @click="myNumberListClose=true">收起更多</a>
+            <span class="item" v-for="(item, index) of info.drawNumbers ? info.drawNumbers.split(';') : []" :key="index">{{item}};</span>
+            <a href="javascript:;" v-if="info.drawNumbers && info.drawNumbers.split(';').length > 3" style="margin-left:10px;" @click="myNumberListClose=true">收起更多</a>
           </template>
         </div>
       </div>

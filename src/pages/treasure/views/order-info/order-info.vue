@@ -107,7 +107,7 @@
 
     <!-- 按钮 -->
     <div class="order-buttons">
-      <Button size="large">立即追投</Button>
+      <Button size="large" @click="handleMoreClick">立即追投</Button>
       <Button size="large" plain style="margin-top:10px;">邀请好友即送抽奖码</Button>
     </div>
   </div>
@@ -138,10 +138,12 @@ export default {
       this.activityApplyIdStr = this.$route.params.id;
       const [err, res] = await orderInfo({ activityApplyIdStr: this.activityApplyIdStr });
       if (err) {
-        console.log(err);
         return;
       }
       this.orderInfo = res.data;
+    },
+    handleMoreClick() {
+      this.$router.replace(`/order/123`);
     }
   },
 };

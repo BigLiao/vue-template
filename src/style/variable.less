@@ -38,25 +38,38 @@
 
 .border1px(@position:bottom) {
   position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    & when (@position=bottom) {
+  & when (@position=bottom) {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
       left: 0;
       bottom: 0;
+      background-color: @background-color;
+      @media screen and (min-device-pixel-ratio:2) {
+        transform: scaleY(0.5);
+      }
+      @media screen and (min-device-pixel-ratio:3) {
+        transform: scaleY(1/3);
+      }
     }
-    & when (@position=top) {
+  }
+  & when (@position=top) {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
       left: 0;
       top: 0;
-    }
-    background-color: @background-color;
-    @media screen and (min-device-pixel-ratio:2) {
-      transform: scaleY(0.5);
-    }
-    @media screen and (min-device-pixel-ratio:3) {
-      transform: scaleY(1/3);
+      background-color: @background-color;
+      @media screen and (min-device-pixel-ratio:2) {
+        transform: scaleY(0.5);
+      }
+      @media screen and (min-device-pixel-ratio:3) {
+        transform: scaleY(1/3);
+      }
     }
   }
 }

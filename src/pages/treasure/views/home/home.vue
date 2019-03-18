@@ -4,7 +4,7 @@
 
 .home {
   .slider-wrapper {
-    .clearfix();
+    height: p2v(182);
   }
   .info {
     padding: 7px 15px 10px;
@@ -275,12 +275,13 @@
       <Cell
         title="往期揭晓"
         is-link
+        to="/order-list"
       >
       </Cell>
       <Cell
         title="本期参与记录"
         is-link
-        to="/order-list"
+        to="/record-list/abc"
       >
       </Cell>
     </div>

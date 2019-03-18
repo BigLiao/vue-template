@@ -38,23 +38,31 @@
               @click="$router.push(`/order/${item.activityId}`)"
             >立即追投</Button>
             <Button
-              v-if="item.activityStatusEnum===2"
-              size="large"
-              type="warning"
-              plain
-              @click="$router.push(`/detail/${item.activityId}`)"
-            >查看详情</Button>
-            <Button
               v-if="item.activityStatusEnum===1"
               size="large"
               plain
               @click="$router.push(`/detail/${item.activityId}`)"
             >去开奖台</Button>
+            <template v-if="item.activityStatusEnum===2">
+              <Button
+                v-if="!item.isWin"
+                size="large"
+                type="warning"
+                plain
+                @click="$router.push(`/detail/${item.activityId}`)"
+              >查看详情</Button>
+              <Button
+                v-if="item.isWin"
+                size="large"
+                @click="$router.push(`/take-prize/${item.activityId}`)"
+              >填写领奖地址</Button>
+            </template>
             <Button
-              v-if="item.activityStatusEnum===3"
-              size="large"
-              @click="$router.push(`/tack-prize/${item.activityId}`)"
-            >填写领奖地址</Button>
+                v-if="item.activityStatusEnum===3"
+                size="large"
+                type="primary"
+                @click="$router.push(`/take-prize/${item.activityId}`)"
+              >待收货</Button>
           </div>
         </li>
       </ul>
@@ -92,7 +100,6 @@ export default {
     async initData() {
       this.lastIdStr = '0';
       const [err, res] = await orderList({ lastIdStr: this.lastIdStr });
-      this.firstLoaded = true;
       if (err) {
         return;
       }

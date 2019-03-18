@@ -25,6 +25,10 @@
   .product-info-wrapper {
     margin-top: 10px;
   }
+
+  .button-wrapper {
+    margin: 60px 20px;
+  }
 }
 
 // 弹窗
@@ -45,49 +49,61 @@
     <div class="header">
       <div class="address-info">
         <div>领奖地址：</div>
-        <div class="address-detail" @click="popupVisible=true">
-          <span>填写收货地址</span><i class="icon-right">&gt;</i>
-        </div>
-        <div class="user">
-          陈小姐&nbsp;1827392839
-        </div>
+        <template v-if="pageData.address">
+          <div class="address-detail" @click="handleAddAddressClick">
+            <span>{{pageData.address.receiverAddress}}</span>
+          </div>
+          <div class="user">
+            {{pageData.address.receiverName}}&nbsp;{{pageData.address.receiverPhone}}
+          </div>
+        </template>
+        <template v-else>
+          <div class="address-detail" @click="handleAddAddressClick">
+            <span>填写收货地址</span><i class="icon-right">&gt;</i>
+          </div>
+        </template>
       </div>
     </div>
     <div class="product-info-wrapper">
-      <product-info></product-info>
+      <product-info :info="pageData"></product-info>
     </div>
-
-    <!-- 填写地址弹窗 -->
-    <Popup
-      v-model="popupVisible"
-      position="right"
-      class="popup-fullscreen"
-      :closeOnClickModal="false"
-    >
-      <AddressForm
-        @cancel="popupVisible=false"
-      ></AddressForm>
-    </Popup>
+    <div class="button-wrapper">
+      <Button size="large" type="primary">确认</Button>
+    </div>
   </div>
 </template>
 
 <script>
 import ProductInfo from '../../components/product-info/product-info';
-import { Popup } from 'mint-ui';
-import AddressForm from './components/address-form/address-form';
+import { takePrizePage } from '../../api/http';
+import { Button } from 'mint-ui';
 
 export default {
   name: 'take-prize',
   components: {
-    ProductInfo, Popup, AddressForm
+    ProductInfo, Button
   },
   data() {
     return {
       popupVisible: false,
+      pageData: {}
     };
   },
+  mounted() {
+    this.initData();
+  },
   methods: {
-    //
+    async initData() {
+      const [err, res] = await takePrizePage();
+      if (err) {
+        console.error(err);
+        return;
+      }
+      this.pageData = res.data;
+    },
+    handleAddAddressClick() {
+      //
+    }
   },
 };
 </script>

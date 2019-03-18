@@ -142,14 +142,14 @@ export default {
   },
   computed: {
     pullUpTxt() {
-      const moreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) || this.$i18n.t('scrollComponent.defaultLoadTxtMore');
+      const moreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) || '加载更多';
 
-      const noMoreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.noMore) || this.$i18n.t('scrollComponent.defaultLoadTxtNoMore');
+      const noMoreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.noMore) || '没有更多了';
 
       return this.pullUpDirty ? moreTxt : noMoreTxt;
     },
     refreshTxt() {
-      return (this.pullDownRefresh && this.pullDownRefresh.txt) || this.$i18n.t('scrollComponent.defaultRefreshTxt');
+      return (this.pullDownRefresh && this.pullDownRefresh.txt) || '下拉刷新';
     }
   },
   watch: {
@@ -245,7 +245,6 @@ export default {
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments);
     },
     clickItem(e, item) {
-      console.log(e);
       this.$emit('click', item);
     },
     destroy() {

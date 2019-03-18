@@ -12,9 +12,12 @@
   <Swipe
     :show-indicators="false"
     :auto="5000"
-    :style="{height:0,paddingBottom:`${1 / ratio * 100}%`}"
+    :style="{height:'100%'}"
   >
-    <SwipeItem v-for="(item, index) of imageList" :key="index">
+    <SwipeItem
+      v-for="(item, index) of imageList" :key="index"
+      :style="{height:'100%'}"
+    >
       <img :src="item" alt="product" width="100%"
       >
     </SwipeItem>

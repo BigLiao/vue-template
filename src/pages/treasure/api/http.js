@@ -40,3 +40,13 @@ export function takePrize({ activityIdStr, receiver, areaCode, phone, address })
 export function orderInfo({ activityApplyIdStr }) {
   return post('/api/activity/apply/detail', { activityApplyIdStr });
 }
+
+// 添加快递地址
+export function addAddress({ receiverName, areaCode, receiverPhone, receiverAddress }) {
+  return post('/api/express/add', { receiverName, areaCode, receiverPhone, receiverAddress });
+}
+
+// 填写领奖地址
+export function takePrizePage() {
+  return post('/api/takePrizePage');
+}

@@ -10,6 +10,8 @@ import TakePrize from '../views/take-prize/take-prize';
 import Record from '../views/record/record';
 import OrderList from '../views/order-list/order-list';
 import Example from '../views/example';
+import AddAddress from '../views/add-address/add-address';
+import RecordList from '../views/record-list/record-list';
 
 Vue.use(Router);
 
@@ -72,16 +74,30 @@ const router = new Router({
       },
       component: Record
     }, {
+      path: '/record-list/:id',
+      name: 'record-list',
+      meta: {
+        title: '参与记录'
+      },
+      component: RecordList
+    }, {
       path: '/order-list',
       name: 'order-list',
       meta: {
-        title: '我的参与记录'
+        title: '我的抽奖记录'
       },
       component: OrderList
     }, {
       path: '/example',
       name: 'example',
       component: Example
+    }, {
+      path: '/add-address',
+      name: 'add-address',
+      meta: {
+        title: '添加快递地址'
+      },
+      component: AddAddress
     }
   ]
 });
