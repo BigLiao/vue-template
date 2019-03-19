@@ -6,7 +6,7 @@ import i18n from '@/locale';
 import '@/style/index';
 
 // Mock 数据
-import '@/mock';
+import './mock';
 
 Vue.config.productionTip = false;
 

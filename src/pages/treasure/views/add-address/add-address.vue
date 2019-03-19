@@ -63,7 +63,7 @@ export default {
         console.error(err);
         return;
       }
-      // this.$router.replace()
+      this.$router.replace('/take-prize/1312');
     }
   },
 };

@@ -102,7 +102,7 @@ export default {
       this.pageData = res.data;
     },
     handleAddAddressClick() {
-      //
+      this.$router.push('/add-address');
     }
   },
 };

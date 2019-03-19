@@ -331,7 +331,6 @@ export default {
     /*right: 0*/
     /*bottom: 0*/
     overflow: hidden;
-    background: #fff;
     .scroll-content {
       position: relative;
       z-index: 1;
@@ -339,7 +338,6 @@ export default {
     .list-content{
       position: relative;
       z-index: 10;
-      background: #fff;
       .list-item{
         height: 60px;
         line-height: 60px;

@@ -179,7 +179,7 @@
     </div>
     <div class="info">
       <h2 class="h2">
-        <Tag type="" text="进行中" />
+        <StatusTag :status="activityData.activityStatusEnum" text="进行中" />
         <span class="title">{{activityData.title}}</span>
       </h2>
       <div style="margin-top:6px;">
@@ -273,7 +273,7 @@
     <!-- 链接 -->
     <div class="links">
       <Cell
-        title="往期揭晓"
+        title="我的抽奖"
         is-link
         to="/order-list"
       >
@@ -345,18 +345,19 @@
 
 <script>
 import Slider from '@/components/slider/slider';
-import Tag from '@/components/tag/tag';
+import StatusTag from '../../components/status-tag/status-tag';
 import Progress from '@/components/progress/progress';
 import { Button, Cell } from 'mint-ui';
 import OnePx from '_c/one-px/one-px';
 import Avatar from '_c/avatar/avatar';
 import Clocker from './components/clocker/clocker';
 import { activityDetail } from '../../api/http';
+import html from './html';
 
 export default {
   name: 'home',
   components: {
-    Slider, Tag, Progress, Button, Cell, OnePx, Avatar, Clocker
+    Slider, StatusTag, Progress, Button, Cell, OnePx, Avatar, Clocker
   },
   data() {
     return {
@@ -371,7 +372,8 @@ export default {
         imageList: [],
         count: 0
       },
-      activityIdStr: ''
+      activityIdStr: '',
+      html: html
     };
   },
   mounted() {

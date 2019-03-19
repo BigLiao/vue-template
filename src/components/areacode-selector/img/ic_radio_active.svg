@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_Radio Button_Active</title>
+    <desc>Created with Sketch.</desc>
+    <g id="规范" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-73.000000, -2797.000000)" id="单选/复选" stroke="#334982">
+            <g transform="translate(58.000000, 2615.000000)">
+                <g id="单选" transform="translate(15.000000, 53.000000)">
+                    <g id="Active-Radio-Button" transform="translate(0.000000, 123.000000)">
+                        <g id="单选复选框/Radio-Button/Active" transform="translate(0.000000, 6.000000)">
+                            <g id="单选">
+                                <circle id="Oval-2" cx="7" cy="7" r="6.5"></circle>
+                                <circle id="Oval-2" fill="#334982" cx="7" cy="7" r="3"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
