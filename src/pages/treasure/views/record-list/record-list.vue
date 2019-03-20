@@ -74,7 +74,6 @@
                 {{item.applyTime}}
               </div>
             </div>
-
           </div>
         </li>
       </ul>

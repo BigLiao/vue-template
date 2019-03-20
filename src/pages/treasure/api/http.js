@@ -1,4 +1,4 @@
-import { http, mockHttp } from '@/lib/http';
+import { http, mockHttp } from '@/lib/http/index';
 import store from '../store';
 import Qs from 'qs';
 
