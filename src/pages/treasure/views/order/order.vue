@@ -158,7 +158,7 @@ export default {
   },
   data() {
     return {
-      cartCount: 0,
+      cartCount: 1,
       activityIdStr: '',
       orderPageData: {}
     };

@@ -94,5 +94,29 @@ export default [
     'luckyNumber': '1000012',
     'luckyUserName': 'opq',
     'drawTime': '2019.03.11 09:09:09'
+  },
+  {
+    'activityId': 'opq',
+    'pointIdStr': 'te',
+    'pointName': 'COCA',
+    'stage': '201903130911',
+    'title': '星巴克限量版樱花杯套组2312',
+    'coverImageUrl': 'https://f10.baidu.com/it/u=1230594473,2222196705&fm=72',
+    'imageList': [
+      'https://f10.baidu.com/it/u=1230594473,2222196705&fm=72',
+      'https://f10.baidu.com/it/u=1230594473,2222196705&fm=72',
+      'https://f10.baidu.com/it/u=1230594473,2222196705&fm=72',
+      'https://f10.baidu.com/it/u=1230594473,2222196705&fm=72'
+    ],
+    'activityStatusEnum': 2,
+    'totalCount': 1000,
+    'applyCount': 900,
+    'leftCount': 100,
+    'count': 10,
+    'drawNumbers': '1000089;1000088;1000087;1000086',
+    'isWin': 0,
+    'luckyNumber': '1000012',
+    'luckyUserName': 'opq',
+    'drawTime': '2019.03.11 09:09:09'
   }
 ];

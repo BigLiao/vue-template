@@ -27,7 +27,9 @@
   .clock {
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 300px;
+    margin-left: -150px;
+    left: 50%;
     padding-top: 36%;
     font-size: 28px;
     color: #ffffff;
@@ -36,7 +38,11 @@
       color: @secondary-color;
       font-size: 20px;
       vertical-align: 10%;
-      padding-left: 4px;
+    }
+    .number {
+      display: inline-block;
+      width: 40px;
+      text-align: center;
     }
   }
 }
@@ -47,9 +53,11 @@
     <div class="issure">期号：20190203001</div>
     <div class="title">揭晓倒计时</div>
     <div class="clock">
-      {{minute}}<span class="unit">分</span>
-      {{second}}<span class="unit">秒</span>
-      {{millisecond}}
+      <span class="number">{{minute}}</span>
+      <span class="unit">分</span>
+      <span class="number">{{second}}</span>
+      <span class="unit">秒</span>
+      <span class="number">{{millisecond}}</span>
     </div>
   </div>
 </template>
@@ -117,7 +125,7 @@ export default {
         this.clockCount = remain;
         this.timer = setTimeout(() => {
           this.loop();
-        }, 50);
+        }, 86);
       } else {
         clockCount = 0;
         this.$emit('clockEnd');
